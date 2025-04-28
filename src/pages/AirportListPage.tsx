@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { getAirports } from '../services/api';
@@ -88,17 +87,17 @@ const AirportListPage: React.FC = () => {
               <Link 
                 to={`/airports/${airport.id}`} 
                 key={airport.id}
-                className="block airport-card-hover"
+                className="block h-full airport-card-hover"
               >
-                <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                  <div className="p-6">
+                <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
+                  <div className="p-6 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-4">
                       <span className="bg-airport-primary/10 text-airport-primary font-semibold px-3 py-1 rounded-full text-sm">
                         {airport.code}
                       </span>
                     </div>
                     <h2 className="text-xl font-semibold text-gray-800 mb-2">{airport.name}</h2>
-                    <p className="text-gray-600">{airport.city}, {airport.country}</p>
+                    <p className="text-gray-600 mb-auto">{airport.city}, {airport.country}</p>
                     
                     <div className="mt-4 flex justify-between items-center">
                       <div className="text-sm text-gray-500">
