@@ -1,9 +1,16 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { ToastProvider } from "./components/Toast";
+import ErrorBoundary from "./components/ErrorBoundary";
+import NavBar from "./components/NavBar";
+import AirportListPage from "./pages/AirportListPage";
+import FacilityCategoryPage from "./pages/FacilityCategoryPage";
+import FacilityListPage from "./pages/FacilityListPage";
+import FacilityDetailPage from "./pages/FacilityDetailPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -13,13 +20,24 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <ToastProvider>
+        <ErrorBoundary>
+          <BrowserRouter>
+            <div className="min-h-screen bg-gray-50">
+              <NavBar />
+              <main>
+                <Routes>
+                  <Route path="/" element={<AirportListPage />} />
+                  <Route path="/airports/:airportId" element={<FacilityCategoryPage />} />
+                  <Route path="/airports/:airportId/:typeId" element={<FacilityListPage />} />
+                  <Route path="/facilities/:facilityId" element={<FacilityDetailPage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+            </div>
+          </BrowserRouter>
+        </ErrorBoundary>
+      </ToastProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
