@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 // Mock data for development when API is unavailable

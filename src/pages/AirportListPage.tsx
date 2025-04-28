@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { getAirports } from '../services/api';
-import { useToast } from '../components/Toast';
+import { useToast } from '../hooks/use-toast';
 import SearchInput from '../components/SearchInput';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Pagination from '../components/Pagination';
@@ -15,7 +15,7 @@ const AirportListPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const { showToast } = useToast();
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchAirports = async () => {
@@ -25,14 +25,21 @@ const AirportListPage: React.FC = () => {
         setAirports(data);
       } catch (error) {
         console.error('Failed to fetch airports:', error);
-        showToast('Failed to load airports. Please try again.', 'error');
+        // Only show toast if it's not a network error while using mock data
+        if (!(error instanceof Error && error.message === 'Network Error')) {
+          toast({
+            title: "Error",
+            description: "Failed to load airports. Please try again.",
+            variant: "destructive",
+          });
+        }
       } finally {
         setLoading(false);
       }
     };
 
     fetchAirports();
-  }, [showToast]);
+  }, [toast]);
 
   // Reset to first page when search changes
   useEffect(() => {
