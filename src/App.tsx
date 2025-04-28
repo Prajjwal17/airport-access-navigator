@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ToastProvider } from "./components/Toast";
 import ErrorBoundary from "./components/ErrorBoundary";
 import NavBar from "./components/NavBar";
@@ -22,20 +22,18 @@ const App = () => (
       <Sonner />
       <ToastProvider>
         <ErrorBoundary>
-          <BrowserRouter>
-            <div className="min-h-screen bg-gray-50">
-              <NavBar />
-              <main>
-                <Routes>
-                  <Route path="/" element={<AirportListPage />} />
-                  <Route path="/airports/:airportId" element={<FacilityCategoryPage />} />
-                  <Route path="/airports/:airportId/:typeId" element={<FacilityListPage />} />
-                  <Route path="/facilities/:facilityId" element={<FacilityDetailPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-            </div>
-          </BrowserRouter>
+          <div className="min-h-screen bg-gray-50">
+            <NavBar />
+            <main>
+              <Routes>
+                <Route path="/" element={<AirportListPage />} />
+                <Route path="/airports/:airportId" element={<FacilityCategoryPage />} />
+                <Route path="/airports/:airportId/:typeId" element={<FacilityListPage />} />
+                <Route path="/facilities/:facilityId" element={<FacilityDetailPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
         </ErrorBoundary>
       </ToastProvider>
     </TooltipProvider>
