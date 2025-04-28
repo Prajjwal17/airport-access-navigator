@@ -1,17 +1,16 @@
-
 import axios from 'axios';
 
 // Mock data for development when API is unavailable
 const MOCK_DATA = {
   airports: [
-    { id: '1', name: 'JFK International Airport', code: 'JFK', city: 'New York', country: 'USA', terminals: 6 },
-    { id: '2', name: 'Los Angeles International', code: 'LAX', city: 'Los Angeles', country: 'USA', terminals: 9 },
-    { id: '3', name: 'Heathrow Airport', code: 'LHR', city: 'London', country: 'UK', terminals: 5 },
-    { id: '4', name: 'Tokyo Haneda Airport', code: 'HND', city: 'Tokyo', country: 'Japan', terminals: 3 },
-    { id: '5', name: 'Dubai International', code: 'DXB', city: 'Dubai', country: 'UAE', terminals: 3 },
-    { id: '6', name: 'Charles de Gaulle', code: 'CDG', city: 'Paris', country: 'France', terminals: 3 },
-    { id: '7', name: 'Singapore Changi', code: 'SIN', city: 'Singapore', country: 'Singapore', terminals: 4 },
-    { id: '8', name: 'Sydney Airport', code: 'SYD', city: 'Sydney', country: 'Australia', terminals: 3 },
+    { id: '1', name: 'Indira Gandhi International Airport', code: 'DEL', city: 'New Delhi', country: 'India', terminals: 3 },
+    { id: '2', name: 'Chhatrapati Shivaji International', code: 'BOM', city: 'Mumbai', country: 'India', terminals: 2 },
+    { id: '3', name: 'Kempegowda International', code: 'BLR', city: 'Bangalore', country: 'India', terminals: 2 },
+    { id: '4', name: 'Chennai International Airport', code: 'MAA', city: 'Chennai', country: 'India', terminals: 2 },
+    { id: '5', name: 'Rajiv Gandhi International', code: 'HYD', city: 'Hyderabad', country: 'India', terminals: 1 },
+    { id: '6', name: 'Netaji Subhas Chandra Bose International', code: 'CCU', city: 'Kolkata', country: 'India', terminals: 2 },
+    { id: '7', name: 'Cochin International Airport', code: 'COK', city: 'Kochi', country: 'India', terminals: 1 },
+    { id: '8', name: 'Sardar Vallabhbhai Patel International', code: 'AMD', city: 'Ahmedabad', country: 'India', terminals: 2 },
   ],
   facilityTypes: [
     { id: 'rest', name: 'Restaurants', icon: '🍽️', count: 12 },
